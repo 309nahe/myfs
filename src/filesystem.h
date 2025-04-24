@@ -16,6 +16,7 @@ typedef struct {
 
 FileSystem* init_fs(void);
 void fs_add_file(FileSystem *fs, File *file);
+void fs_rm_file(FileSystem *fs, const char *name);
 File* create_file(const char *name, const char *content);
 void free_fs(FileSystem *fs);
 

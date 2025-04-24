@@ -30,6 +30,23 @@ void fs_add_file(FileSystem *fs, File *file)
     
 }
 
+void fs_rm_file(FileSystem *fs, const char *name)
+{
+    for (size_t i = 0; i < fs->file_count; i++)
+    {
+        if (strcmp(fs->files[i].name, name) == 0)
+        {
+            free(fs->files[i].content);
+            memmove(&fs->files[i], &fs->files[i + 1], sizeof(File) * (fs->file_count - i - 1));
+            fs->file_count--;
+            fs->files = realloc(fs->files, sizeof(File) * fs->file_count);
+            return;
+        }
+    }
+    printf("File not found: %s\n", name);
+    return;
+}
+
 File* create_file(const char *name, const char *content)
 {
     if(name == NULL)
@@ -69,6 +86,9 @@ int main(void)
     File *file2 = create_file("bestcat.txt", "Firestar!!");
     fs_add_file(fs, file);
     fs_add_file(fs, file2);
+    fs_rm_file(fs, "hello.txt");
+    fs_rm_file(fs, "foo.txt");
+    fs_add_file(fs, file);
 
     free(file->content);
     free(file);
