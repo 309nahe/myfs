@@ -19,15 +19,7 @@ void fs_add_file(FileSystem *fs, File *file)
     strcpy(fs->files[fs->file_count].name, file->name);
     fs->files[fs->file_count].content = malloc(sizeof(char) * strlen(file->content) + 1);
     strcpy(fs->files[fs->file_count].content, file->content);
-    
-
-    printf("File Name: %s\n",  fs->files[fs->file_count].name);
-    printf("File Content: %s\n", fs->files[fs->file_count].content);
-
     fs->file_count++;
-    printf("Count: %ld\n", fs->file_count);
-
-    
 }
 
 void fs_rm_file(FileSystem *fs, const char *name)
