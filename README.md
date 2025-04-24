@@ -10,14 +10,14 @@ The project will be organized into the following components:
 
 - **Data Structures**: Definitions for files and the file system.
 - **API Functions**: Functions to create, read, and delete files.
-- **Testing**: Unit tests to ensure the correctness of the implementation.
 
 ## Step-by-Step Implementation
 
-### Step 1: Define Data Structures
+### Step 1: Define Data Structures and basic file handling
 
 **Objective**: Create the basic data structures for files and the file system.
 
 **Tasks**:
 - Define a `File` struct to hold file metadata and content.
 - Define a `FileSystem` struct to manage a collection of files.
+- Create the basic functions to handle a flat filesystem in memory such as : create_file, delete_file
